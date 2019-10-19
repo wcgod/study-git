@@ -16,13 +16,24 @@
     var LOTTO = document.getElementById("LOTTO");
     //로또 번호 추첨 함수
     function getLuckyNumber() {
-        LOTTO.innerHTML = genLottoNo();
+        LOTTO.innerHTML = getLottoNo();
         //TODO 7개로 만들어줘!
     }
     // 랜덤 번호 생성 함수
     function getLottoNo() {
-        return Math.floor(Math.random * 45) + 1;
-}
+        return Math.floor(Math.random() * 45) + 1;
+    }
+
+    function getLuckyNumber() {
+        var numbers = [];
+        while ( numbers.length < 6 ) {
+            var newNumber = getLottoNo();
+            if ( numbers.indexOf(newNumber) < 0 ) { // 중복검사
+                numbers.push(newNumber);
+            }
+        }
+        LOTTO.innerHTML = numbers.join(" ");
+    }   
 </script>
 </body>
 </html>
